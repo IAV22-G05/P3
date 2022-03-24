@@ -143,5 +143,8 @@ Cuando las luces se apagan o se encienden por acción del vizconde o el fantasma
 
 apagaLuz pone el booleano que será devuelto por getLuces a false, mientras que enciendeLuz lo pone a true.
 
+## PROPUESTA DE IMPLEMENTACIÓN 
+El mayor problema a implementar es el árbol de decisiones del fantasma, aquí se plentea un diagrama del árbol.
+
 ### FANTASMA
 ![Diagrama Opera](https://github.com/IAV22-G05/P3/blob/main/Assets/Imagenes/ArbolDecisionFantasma.jpg)
