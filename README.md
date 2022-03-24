@@ -148,3 +148,7 @@ El mayor problema a implementar es el árbol de comportamientos del fantasma, aq
 
 ### FANTASMA
 ![Diagrama Opera](https://github.com/IAV22-G05/P3/blob/main/Assets/Imagenes/ArbolDecisionFantasma.jpg)
+
+## REFERENCIAS
+-Documentación árboles de comportamientos: https://opsive.com/support/documentation/behavior-designer/conditional-aborts/
+-AI_for_Games_third_edition_2019_Ian_Millington
