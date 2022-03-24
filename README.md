@@ -142,3 +142,6 @@ Para comprobar si se debe cambiar de estados se llama al método getLuces, que d
 Cuando las luces se apagan o se encienden por acción del vizconde o el fantasma, se invoca al método apagaLuz o al método enciendeLuz según corresponda. 
 
 apagaLuz pone el booleano que será devuelto por getLuces a false, mientras que enciendeLuz lo pone a true.
+
+### FANTASMA
+![Diagrama Opera](https://github.com/IAV22-G05/P3/blob/main/Assets/Imagenes/ArbolDecisionFantasma.jpg)
