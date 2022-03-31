@@ -105,6 +105,12 @@ public class Cantante : MonoBehaviour
         return (1 << NavMesh.GetAreaFromName("Celda") & navHit.mask) != 0;
     }
 
+    // Comprueba si está siendo llevada por el fantasma o el vizconde
+    public bool EstaCapturada()
+    {
+        return capturada;
+    }
+
     // Comprueba si esta en un sitio desde el cual sabe llegar al escenario
     public bool ConozcoEsteSitio()
     {
@@ -176,5 +182,15 @@ public class Cantante : MonoBehaviour
                 agente.SetDestination(RandomNavSphere(distanciaDeMerodeo));
             }
         }
+    }
+
+    public void Capturada()
+    {
+        capturada = true;
+    }
+
+    public void Liberada()
+    {
+        capturada = false;
     }
 }

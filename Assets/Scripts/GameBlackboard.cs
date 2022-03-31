@@ -25,6 +25,7 @@ public class GameBlackboard : MonoBehaviour
     public GameObject puerta;
     public GameObject[] randomSitios;
     public bool imprisoned { get; set; }
+    public bool captured { get; set; }
 
     public bool isGhostInSotano { get; set; }
 
@@ -35,6 +36,7 @@ public class GameBlackboard : MonoBehaviour
 
     void Awake()
     {
+        captured = false;
         imprisoned = false;
         gate = false;
         hited = false;
