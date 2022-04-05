@@ -43,6 +43,12 @@ public class Cantante : MonoBehaviour
     // La blackboard
     public GameBlackboard bb;
 
+    [SerializeField]
+    GameObject vizconde;
+    
+    [SerializeField]
+    GameObject ghost;
+
     public void Awake()
     {
         agente = GetComponent<NavMeshAgent>();
@@ -184,6 +190,11 @@ public class Cantante : MonoBehaviour
         }
     }
 
+    public void SigueVizconde()
+    {
+        agente.SetDestination(vizconde.transform.position);
+    }
+
     public void Capturada()
     {
         capturada = true;
@@ -192,5 +203,10 @@ public class Cantante : MonoBehaviour
     public void Liberada()
     {
         capturada = false;
+    }
+
+    public Transform GetGhost()
+    {
+        return ghost.transform;
     }
 }
