@@ -44,13 +44,19 @@ public class GameBlackboard : MonoBehaviour
 
     private void Update()
     {
-        imprisoned = !singer.GetComponent<AudioSource>().isPlaying;
+        imprisoned = singer.GetComponent<Cantante>().EstaEnCelda();
     }
 
     // Permite al fantasma saber a qué palanca debería ir
     public GameObject nearestLever(GameObject go) 
     {
-        return ((westLever.transform.position - go.transform.position).magnitude > (eastLever.transform.position - go.transform.position).magnitude) ? eastLever : westLever; 
+        if ((westLever.transform.position - go.transform.position).magnitude > (eastLever.transform.position - go.transform.position).magnitude
+            && !eastLever.transform.GetChild(0).GetComponent<ControlPalanca>().caido)
+            return eastLever;
+        else if (!westLever.transform.GetChild(0).GetComponent<ControlPalanca>().caido)
+            return westLever;
+        else
+            return null;
     }
 
 

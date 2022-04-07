@@ -22,6 +22,8 @@ public class GhostPalancaAction : Action
     public override TaskStatus OnUpdate()
     {
         lever = blackboard.nearestLever(this.gameObject);
+        if (lever == null)
+            return TaskStatus.Success;
         var navHit = new NavMeshHit();
         NavMesh.SamplePosition(transform.position, out navHit, 2, NavMesh.AllAreas);
         agent.SetDestination(lever.transform.position);
