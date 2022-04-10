@@ -32,6 +32,8 @@ public class Cantante : MonoBehaviour
     public int distanciaDeMerodeo = 16;
     // Si canta o no
     public bool cantando = false;
+    // Si esta siendo salvada o no
+    public bool salvada = false;
 
     // Componente cacheado NavMeshAgent
     private NavMeshAgent agente;
@@ -208,5 +210,13 @@ public class Cantante : MonoBehaviour
     public Transform GetGhost()
     {
         return ghost.transform;
+    }
+    public Transform GetVizconde()
+    {
+        return vizconde.transform;
+    }
+    public bool EstaSalvada()
+    {
+        return salvada;
     }
 }

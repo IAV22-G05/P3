@@ -31,6 +31,7 @@ public class GameBlackboard : MonoBehaviour
 
     public bool pianoed { get { return piano.GetComponent<ControlPiano>().tocado; } }
     public bool hited;
+    public bool saved;
     
     public bool gate { get; set; }
 
@@ -40,6 +41,7 @@ public class GameBlackboard : MonoBehaviour
         imprisoned = false;
         gate = false;
         hited = false;
+        saved = false;
     }
 
     private void Update()

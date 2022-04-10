@@ -20,12 +20,14 @@ public class Player : MonoBehaviour
     private float ultimaAccion = 0;
     private Animator anim;
     private Rigidbody rb;
+    Cantante cantante;
 
     void Start()
     {
         tiempoAtaqueActivo = tiempoEsperaAtaque / 2;
         anim = gameObject.GetComponentInChildren<Animator>();
         rb = gameObject.GetComponent<Rigidbody>();
+        cantante = GameObject.FindGameObjectWithTag("Cantante").GetComponent<Cantante>();
     }
 
     void Update()
@@ -74,7 +76,13 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q) && ultimaAccion <= 0)
         {
             ultimaAccion = tiempoEsperaAccion;
-            areaCaptura.SetActive(true);
+
+            //Si volvemos a dar a la q con la señora en la mano, la dejamos en el suelo
+            if (!cantante.salvada)
+                areaCaptura.SetActive(true);
+            else
+                cantante.salvada = false;
+
             anim.SetBool("Usable", true);
         }
         else if (ultimaAccion > 0)

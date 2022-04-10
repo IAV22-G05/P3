@@ -9,6 +9,7 @@ TagManager:
   - Piano
   - Palanca
   - Puerta
+  - Cantante
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,6 @@ TagManager:
   - 
   - Player
   - PointerLayer
-  - 
   - 
   - 
   - 
