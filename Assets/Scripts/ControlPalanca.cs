@@ -37,7 +37,7 @@ public class ControlPalanca : MonoBehaviour
             candelabro.GetComponent<Rigidbody>().useGravity = true;
             for (int i = 0; i < publico.transform.childCount; ++i)
             {
-                publico.transform.GetChild(i).GetComponent<Publico>().apagaLuz();
+                publico.transform.GetChild(i).GetComponent<Publico>().apagaLuz(candelabro);
             }
         }
         else
@@ -45,7 +45,7 @@ public class ControlPalanca : MonoBehaviour
             candelabro.GetComponent<Rigidbody>().useGravity = false;
             for (int i = 0; i < publico.transform.childCount; ++i)
             {
-                publico.transform.GetChild(i).GetComponent<Publico>().enciendeLuz();
+                publico.transform.GetChild(i).GetComponent<Publico>().enciendeLuz(candelabro);
             }
         }
     }

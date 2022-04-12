@@ -47,6 +47,7 @@ public class GameBlackboard : MonoBehaviour
     private void Update()
     {
         imprisoned = singer.GetComponent<Cantante>().EstaEnCelda();
+        captured = singer.GetComponent<Cantante>().capturada;
     }
 
     // Permite al fantasma saber a qué palanca debería ir

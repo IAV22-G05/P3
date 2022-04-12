@@ -56,6 +56,7 @@ public class Cantante : MonoBehaviour
     public void Awake()
     {
         agente = GetComponent<NavMeshAgent>();
+        GetComponent<AudioSource>().Pause();
     }
 
     public void Start()
@@ -87,7 +88,7 @@ public class Cantante : MonoBehaviour
         if ((1 << NavMesh.GetAreaFromName("Escenario") & navHit.mask) != 0)
         {
             tiempoComienzoCanto += Time.deltaTime;  // Solo disminuye si se encuentra en el escenario como tal
-            if(!GetComponent<AudioSource>().isPlaying) GetComponent<AudioSource>().Play();
+            if(!GetComponent<AudioSource>().isPlaying) GetComponent<AudioSource>().UnPause();
         }
         return tiempoComienzoCanto >= tiempoDeCanto;
     }

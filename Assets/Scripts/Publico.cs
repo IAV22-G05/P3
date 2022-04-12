@@ -9,6 +9,9 @@ using UnityEngine.AI;
 
 public class Publico : MonoBehaviour
 {
+    [SerializeField]
+    GameObject candelabro;
+
     int lucesEncendidas = 2;
     bool sentado = true;
 
@@ -34,16 +37,18 @@ public class Publico : MonoBehaviour
         return sentado;
     }
 
-    public void apagaLuz()
+    public void apagaLuz(GameObject caido)
     {
         lucesEncendidas--;
-        sentado = lucesEncendidas == 2;
+        if(caido == candelabro)
+            sentado = false;
     }
     //se llama cuando el fantasma o el vizconde desactivan o activan las luces
-    public void enciendeLuz()
+    public void enciendeLuz(GameObject levantado)
     {
          lucesEncendidas++;
-        sentado = lucesEncendidas == 2;
+        if (levantado == candelabro)
+            sentado = true;
     }
 
 }
