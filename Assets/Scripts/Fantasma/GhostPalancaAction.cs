@@ -21,17 +21,25 @@ public class GhostPalancaAction : Action
 
     public override TaskStatus OnUpdate()
     {
+        // Cogemos la palanca mas cercana
         lever = blackboard.nearestLever(this.gameObject);
+
+        // Devolvemos Success cuando las 2 estan caidas
         if (lever == null)
             return TaskStatus.Success;
+
         var navHit = new NavMeshHit();
         NavMesh.SamplePosition(transform.position, out navHit, 2, NavMesh.AllAreas);
+
+        // Movemos al fantasma a la siguiente palanca
         agent.SetDestination(lever.transform.position);
-        if (Vector3.SqrMagnitude(transform.position - lever.transform.position) < 1)
-        {
-            agent.SetDestination(transform.position);
-            return TaskStatus.Success;
-        }
-        else return TaskStatus.Running;
+        //if (Vector3.SqrMagnitude(transform.position - lever.transform.position) < 1)
+        //{
+        //    agent.SetDestination(transform.position);
+        //    return TaskStatus.Success;
+        //}
+
+        // Repetimos el proceso hasta que las 2 palancas esten caidas y pasamamos a la rama de persecucion
+        return TaskStatus.Running;
     }
 }

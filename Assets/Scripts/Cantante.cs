@@ -34,6 +34,8 @@ public class Cantante : MonoBehaviour
     public bool cantando = false;
     // Si esta siendo salvada o no
     public bool salvada = false;
+    // Indica si ha empezado a cantar por primera vez o después de haber sido liberada por el vizconde
+    public bool inicioCanto = false;
 
     // Componente cacheado NavMeshAgent
     private NavMeshAgent agente;
@@ -72,6 +74,7 @@ public class Cantante : MonoBehaviour
     // Comienza a cantar, reseteando el temporizador
     public void Cantar()
     {
+        inicioCanto = true;
         tiempoComienzoCanto = 0;
         cantando = true;
     }
@@ -101,7 +104,8 @@ public class Cantante : MonoBehaviour
     {
         NavMeshHit navHit;
         NavMesh.SamplePosition(transform.position, out navHit, 2f, NavMesh.AllAreas);
-        if ((1 << NavMesh.GetAreaFromName("Bambalinas") & navHit.mask) != 0) tiempoComienzoDescanso += Time.deltaTime;  // Solo disminuye si esta en las bambalinas
+        if ((1 << NavMesh.GetAreaFromName("Bambalinas") & navHit.mask) != 0)
+            tiempoComienzoDescanso += Time.deltaTime;  // Solo disminuye si esta en las bambalinas
         return tiempoComienzoDescanso >= tiempoDeDescanso;
     }
 
@@ -113,7 +117,7 @@ public class Cantante : MonoBehaviour
         return (1 << NavMesh.GetAreaFromName("Celda") & navHit.mask) != 0;
     }
 
-    // Comprueba si está siendo llevada por el fantasma o el vizconde
+    // Comprueba si está siendo llevada por el fantasma 
     public bool EstaCapturada()
     {
         return capturada;
@@ -130,6 +134,12 @@ public class Cantante : MonoBehaviour
             (1 << NavMesh.GetAreaFromName("Palco Este") & navHit.mask) != 0 ||
             (1 << NavMesh.GetAreaFromName("Butacas") & navHit.mask) != 0 ||
             (1 << NavMesh.GetAreaFromName("Pasillos Escenario") & navHit.mask) != 0;
+    }
+
+    // Comprueba si ha empezado a cantar por primera vez o despues de haber sido capturada
+    public bool CantanteInicioShow()
+    {
+        return inicioCanto;        
     }
 
     //Mira si ve al vizconde con un angulo de vision y una distancia maxima
@@ -199,6 +209,7 @@ public class Cantante : MonoBehaviour
 
     public void Capturada()
     {
+        inicioCanto = false;
         capturada = true;
     }
 
@@ -215,8 +226,17 @@ public class Cantante : MonoBehaviour
     {
         return vizconde.transform;
     }
+    // Indica si esta siendo llevada por el vizconde
     public bool EstaSalvada()
     {
         return salvada;
+    }
+    public void corteCantar()
+    {
+        cantando = false;
+    }
+    public void entraCelda()
+    {
+        inicioCanto = false;
     }
 }

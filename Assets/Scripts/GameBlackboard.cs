@@ -52,13 +52,39 @@ public class GameBlackboard : MonoBehaviour
     // Permite al fantasma saber a qué palanca debería ir
     public GameObject nearestLever(GameObject go) 
     {
-        if ((westLever.transform.position - go.transform.position).magnitude > (eastLever.transform.position - go.transform.position).magnitude
-            && !eastLever.transform.GetChild(0).GetComponent<ControlPalanca>().caido)
+        //// Si la palanca ESTE esta mas cerca que la OESTE y no esta CAIDA, devolvemos la ESTE
+        //if ((westLever.transform.position - go.transform.position).magnitude > (eastLever.transform.position - go.transform.position).magnitude
+        //    && !eastLever.transform.GetChild(0).GetComponent<ControlPalanca>().caido)
+        //    return eastLever;
+        //// Si no
+        //else if (!westLever.transform.GetChild(0).GetComponent<ControlPalanca>().caido)
+        //    return westLever;
+        //else
+        //    return null;
+
+        //GameObject succesLever = null;
+
+        // Si las 2 estan arriba devolvemos la mas cercana
+        if (!eastLever.transform.GetChild(0).GetComponent<ControlPalanca>().caido
+            &&
+           !westLever.transform.GetChild(0).GetComponent<ControlPalanca>().caido)
+        {
+            if ((westLever.transform.position - go.transform.position).magnitude
+                >
+                (eastLever.transform.position - go.transform.position).magnitude)
+            {
+                return eastLever;
+            }
+            else
+                return westLever;
+        }
+        // Si no devolvemos la que no este caida
+        else if (!eastLever.transform.GetChild(0).GetComponent<ControlPalanca>().caido)
             return eastLever;
         else if (!westLever.transform.GetChild(0).GetComponent<ControlPalanca>().caido)
             return westLever;
-        else
-            return null;
+        // SI estan las 2 caidas devolvemos null
+        else return null;
     }
 
 

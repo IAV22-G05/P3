@@ -17,6 +17,7 @@ public class GhostWestLeverCondition : Conditional
 
     public override TaskStatus OnUpdate()
     {
+        //Si no esta caida  pasamos a tirarla
         if (!blackboard.westLever.transform.GetChild(0).GetComponent<ControlPalanca>().caido)
             return TaskStatus.Success;
 
