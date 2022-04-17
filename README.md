@@ -2,7 +2,7 @@
 
 Sergio Molinero Aparicio - Andrés Carnicero Esteban
 
-Video: 
+Video: https://youtu.be/5Xs9pihlOtY
 
 Resumen de objetivos.
 
